@@ -4,5 +4,17 @@ const jokeBtn = document.getElementById('jokeBtn');
 generateJoke();
 
 function generateJoke() {
-    fetch('https://icanhazdadjoke.com/');
+    const config = {
+        // Look into
+     headers: {
+            'Accept': 'application/json',
+        },
+    }
+
+    fetch('https://icanhazdadjoke.com', config)
+    .then((res) => res.json())
+    .then((data) => {
+        jokeEl.innerHTML = data.joke;
+    });
+
 }
